@@ -70,7 +70,6 @@ export default function CountryPage() {
                   <p className="flex flex-wrap gap-1 justify-end ">
                     {country.languages
                       ? Object.values(country.languages).map((lang) => {
-                          console.log(lang);
                           return typeof lang === "string" ? (
                             <span key={lang}>{lang}</span>
                           ) : (
