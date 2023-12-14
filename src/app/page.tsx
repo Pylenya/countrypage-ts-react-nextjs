@@ -6,7 +6,7 @@ export default async function Home() {
   let data = await getData();
   return (
     <main>
-      <div className="mx-auto  pr-4 pl-4 max-w-[1440px]">
+      <div className="mx-auto pr-4 pl-4 max-w-[1440px]">
         <CountriesList data={data} />
       </div>
     </main>

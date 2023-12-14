@@ -59,7 +59,7 @@ export default function CountryPage() {
                 </div>
                 <div className="flex  justify-between border-solid border-[1px] min-h-[100px] gap-3 pt-4 pb-4 items-center pl-4 pr-4 border-gray-dark">
                   <span className="text-gray">Capital</span>
-                  <span>{country.capital[0]}</span>
+                  <span>{country.capital ? country.capital[0] : "-"}</span>
                 </div>
                 <div className="flex  justify-between border-solid border-[1px] min-h-[100px] gap-3 pt-4 pb-4 items-center pl-4 pr-4 border-gray-dark">
                   <span className="text-gray">Subregion</span>
