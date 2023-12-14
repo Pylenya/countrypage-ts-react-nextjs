@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-dark text-gray-light;
+}
+
+.header__bg {
+  background: url("../images/hero-image-wr.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+}
+
+@layer components {
+  .btn {
+    @apply min-w-[70px] p-1 rounded-xl;
+  }
+  .btn--active {
+    @apply bg-gray;
+  }
+}
