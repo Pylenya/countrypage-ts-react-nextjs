@@ -24,7 +24,6 @@ export default function CountryPage() {
     name: string;
     symbol: string;
   }
-  console.log(countryData);
   return (
     countryData && (
       <div className="mx-auto pr-4 pl-4 max-w-[1440px]">
@@ -40,10 +39,10 @@ export default function CountryPage() {
                   height={250}
                 ></Image>
                 <span className="text-center text-4xl">
-                  {country.name.common}
+                  {country.name.common ? country.name.common : ""}
                 </span>
                 <span className="text-center mb-10">
-                  {country.name.official}
+                  {country.name.official ? country.name.official : ""}
                 </span>
                 <div className="flex gap-6 justify-center mb-10 flex-col md:flex-row">
                   <div className="flex justify-between bg-gray-dark p-3 rounded-xl min-w-[280px] text-center">
@@ -63,20 +62,22 @@ export default function CountryPage() {
                 </div>
                 <div className="flex  justify-between border-solid border-[1px] min-h-[100px] gap-3 pt-4 pb-4 items-center pl-4 pr-4 border-gray-dark">
                   <span className="text-gray">Subregion</span>
-                  <span>{country.subregion}</span>
+                  <span>{country.subregion ? country.subregion : "-"}</span>
                 </div>
 
                 <div className="flex  justify-between border-solid border-[1px] min-h-[100px] gap-3 pt-4 pb-4 items-center pl-4 pr-4 border-gray-dark">
                   <span className="text-gray">Language</span>
                   <p className="flex flex-wrap gap-1 justify-end ">
-                    {country.languages &&
-                      Object.values(country.languages).map((lang) => {
-                        return typeof lang === "string" ? (
-                          <span key={lang}>{lang}</span>
-                        ) : (
-                          ""
-                        );
-                      })}
+                    {country.languages
+                      ? Object.values(country.languages).map((lang) => {
+                          console.log(lang);
+                          return typeof lang === "string" ? (
+                            <span key={lang}>{lang}</span>
+                          ) : (
+                            "-"
+                          );
+                        })
+                      : "-"}
                   </p>
                 </div>
 
@@ -84,9 +85,13 @@ export default function CountryPage() {
                   <span className="text-gray">Currencies</span>
                   <span>
                     <p>
-                      {Object.values<CURR>(country.currencies).map((curr) => {
-                        return <span key={curr.name}>{curr.name}</span>;
-                      })}
+                      {country.currencies
+                        ? Object.values<CURR>(country.currencies).map(
+                            (curr) => {
+                              return <span key={curr.name}>{curr.name}</span>;
+                            }
+                          )
+                        : "-"}
                     </p>
                   </span>
                 </div>
