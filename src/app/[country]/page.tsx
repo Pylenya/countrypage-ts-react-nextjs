@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { getCountry } from "../utils";
 import Image from "next/image";
@@ -20,6 +20,9 @@ export default function CountryPage() {
     }
     fetchData();
   }, [pathname]);
+  useEffect(() => {
+    if (!countryData) redirect("/");
+  }, [countryData]);
   interface CURR {
     name: string;
     symbol: string;
