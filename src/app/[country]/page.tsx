@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function CountryPage() {
   const pathname = usePathname();
   const [countryData, setCountryData] = useState<any>();
-
+  const [error, setError] = useState(false);
   useEffect(() => {
     async function fetchData() {
       try {
@@ -16,16 +16,18 @@ export default function CountryPage() {
         setCountryData(data);
       } catch (error) {
         console.error("Error fetching country data.");
+        setError(true);
       }
     }
     fetchData();
   }, [pathname]);
   useEffect(() => {
-    if (!countryData) {
+    if (error) {
       alert("Unknown Country, redirect...");
+      setError(false);
       redirect("/russia");
     }
-  }, [countryData]);
+  }, [error]);
   interface CURR {
     name: string;
     symbol: string;
