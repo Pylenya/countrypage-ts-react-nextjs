@@ -21,7 +21,10 @@ export default function CountryPage() {
     fetchData();
   }, [pathname]);
   useEffect(() => {
-    if (!countryData) redirect("/");
+    if (!countryData) {
+      alert("Unknown Country, redirect...");
+      redirect("/russia");
+    }
   }, [countryData]);
   interface CURR {
     name: string;
